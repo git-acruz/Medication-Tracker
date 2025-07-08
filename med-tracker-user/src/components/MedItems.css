@@ -1,0 +1,26 @@
+
+.medicine-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.medicine-item.taken {
+  background-color: #d4f4d2;
+}
+
+.medicine-item button {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin: 5px 2px 5px 10px;
+}
+
+.taken-time {
+  font-size: 0.85em;
+  color: #555;
+  margin-top: 4px;
+}
