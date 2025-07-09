@@ -5,7 +5,7 @@ import API_BASE from "../api";
 import '../App.css';
 
 // This component receives the logged-in user's ID and a logout function as props
-function TrackerPage({ userId, onLogout}) {
+function TrackerPage({ userId, onLogout, setLoading }) {
     const [medicines, setMedicines] = useState([]);
 
     // record date today
@@ -61,6 +61,8 @@ function TrackerPage({ userId, onLogout}) {
             return; // do nothing if logged out
         }
 
+        setLoading(true);
+
         const medicinesWithUserId = medicines.map(medicinesDataToDb => ({ userId, ...medicinesDataToDb }));
         console.log(medicinesWithUserId)
 
@@ -71,9 +73,11 @@ function TrackerPage({ userId, onLogout}) {
         })
         .then(res => res.json())
         .then(data => {
+            setLoading(false);
             alert('Medicine list saved to server!')
         })
         .catch(err => {
+            setLoading(false);
             alert('Failed to delete, server issue.')
             console.error('Save error:', err);
         });
@@ -82,6 +86,9 @@ function TrackerPage({ userId, onLogout}) {
     //For reset button
     const resetMedicines = () => {
         if (window.confirm("Are you sure you want to delete all medicines?")) {
+
+            setLoading(true);
+
             fetch(`${API_BASE}/medications/all?userId=${userId}`, {
                 method: 'DELETE', // DELETE means delete
             })
@@ -93,9 +100,11 @@ function TrackerPage({ userId, onLogout}) {
             })
             .then(() => {
                 setMedicines([]);
+                setLoading(false);
                 alert("All items have been deleted!");
             })
             .catch(err => {
+                setLoading(false);
                 alert('Failed to delete, server issue.')
                 console.error('Delete error:', err)
             });
