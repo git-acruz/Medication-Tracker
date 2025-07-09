@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import '../components/loginform.css';
 import API_BASE from '../api';
 
-function LoginForm({ onLoginSuccess }) {
+function LoginForm({ onLoginSuccess, setLoading }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [formType, setformType] = useState('login');
     const [error, setError] = useState('');
     const [confirm, setConfirm] = useState('');
+    const [stayLoggedIn, setStayLoggedIn] = useState(false);
     
     const handleApiCall = (endpoint, body) => {
+        setLoading(true);
+
         fetch(`${API_BASE}/${endpoint}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -17,13 +20,18 @@ function LoginForm({ onLoginSuccess }) {
         })
         .then(res => res.json())
         .then(data => {
+            setLoading(false);
+
             if (data.error) {
                 setError(data.error); // Display error from server
             } else {
-                onLoginSuccess(data); // on success, call the function from App.js
+                onLoginSuccess(data, stayLoggedIn); // on success, call the function from App.js
             }
         })
-        .catch(() => setError('An error ocurred. Please try again.'));
+        .catch(() => {
+            setLoading(false)
+            setError('An error ocurred. Please try again.')
+        });
     };
 
     // login handler
@@ -98,6 +106,16 @@ function LoginForm({ onLoginSuccess }) {
                 <div>
                     {error && <p className='error-message'>{error}</p>}
                 </div>
+                
+                <div className='checkbox-container'>
+                    <label>
+                        <input
+                            type='checkbox'
+                            checked={stayLoggedIn}
+                            onChange={(e) => setStayLoggedIn(e.target.checked)}
+                        />Stay Logged In?
+                    </label>
+                </div>
                 <div className='btn-container'>
                     {/* This button's text and function changes */}
                     {formType === 'login' ? (
@@ -130,7 +148,6 @@ function LoginForm({ onLoginSuccess }) {
                             >Create Account
                         </button>
                     )}
-                    
                     
                 </div>
 
