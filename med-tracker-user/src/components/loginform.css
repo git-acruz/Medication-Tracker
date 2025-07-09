@@ -58,6 +58,14 @@ body {
     cursor: pointer;
 }
 
+.checkbox-container {
+    font-size: 0.9rem;
+    font-style: italic;
+    width: 250px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
 p {
     font-size: 0.9rem;
     text-align: center;
@@ -66,6 +74,11 @@ p {
 
 .error-message {
     color: red;
+}
+
+.loading {
+    color: rgb(98, 227, 253);
+    margin-top: 10px;
 }
 
 @media (max-width: 376px) {
@@ -97,8 +110,21 @@ p {
         margin-bottom: 10px;
     }
 
-    .btn-container #login-btn:hover, .btn-container #create-btn:hover {
+    .btn-container #login-btn:active, .btn-container #create-btn:active {
         font-size: 0.8rem;
+    }
+
+    .checkbox-container {
+    font-size: 0.8rem;
+    width: unset;
+    max-width: 100%;
+    margin: unset;
+    text-align: center;
+    }
+
+    .loading {
+        color: rgb(98, 227, 253);
+        margin-top: 10px;
     }
 
 }
@@ -130,8 +156,18 @@ p {
         font-size: 0.7rem;
     }
 
-    .btn-container #login-btn:hover, .btn-container #create-btn:hover {
+    .btn-container #login-btn:active, .btn-container #create-btn:active {
         font-size: 0.8rem;
+    }
+
+    .checkbox-container {
+        font-size: 0.8rem;
+        max-width: 90%;
+    }
+
+    .loading {
+        color: rgb(98, 227, 253);
+        margin-top: 10px;
     }
 
 }

@@ -20,11 +20,12 @@
 }
 
 .medicine-item .medlist-texts {
-  width: 50vw;
+  width: 50%;
+  overflow-wrap: break-word;
 }
 
 .medicine-item .medlist-btns {
-  width: 50vw;
+  width: 50%;
   text-align: end;
 }
 
@@ -34,6 +35,13 @@
   margin-top: 4px;
 }
 
+@media (max-width: 376px) {
+  .medicine-item button {
+    padding: 3px 5px;
+    font-size: 12px;
+    margin: 5px 1px 5px 10px;
+  }
+}
 
 @media (max-width: 426px) {
   .medicine-item button {
