@@ -52,3 +52,37 @@
   justify-content: center;
   margin: 20px auto;
 }
+
+
+/* - - - - - - - - - - - - - media queries - - - - - - - - - - - - - - - - - - - - */
+
+@media (max-width: 376px) {
+  .tracker-container {
+    border: 1px solid black;
+  }
+
+  .tracker-container h1 {
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  .today-date {
+    font-size: 1rem;
+    padding: 5px 0;
+  }
+
+  .save-button:active {
+    background-color: #005999;
+  }
+
+  .reset-button:active {
+    background-color: #7fadce;
+    color: #00008b;
+  }
+
+  .logout-button:active {
+    background-color: #87cefa;
+    color: #005999;
+  }
+
+}

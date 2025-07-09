@@ -35,7 +35,7 @@ function MedicineItem({ medicine, onToggle, onEdit, onDelete }) {
             />
             </>
             ) : (
-            <div>
+            <div className='medlist-texts'>
                 <strong>{medicine.name}</strong> at <strong>{scheduleIn12hrFormat}</strong>
                 { medicine.taken ?  (
                     <div className='taken-time'>✅ Taken on {medicine.takenDate} at {medicine.takenTime}</div>
@@ -43,7 +43,7 @@ function MedicineItem({ medicine, onToggle, onEdit, onDelete }) {
             </div>
             )}
 
-            <div>
+            <div className='medlist-btns'>
                 <button onClick={onToggle}>
                     {medicine.taken ? 'Taken' : 'Not Taken'}
                 </button>

@@ -5,7 +5,28 @@
   flex-wrap: wrap;
 }
 
+.medicine-form #med-name {
+  max-width: 45vw;
+}
+
 .medicine-form input, .medicine-form button {
   padding: 8px;
   font-size: 16px;
+}
+
+@media (max-width: 376px) {
+  .medicine-form {
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+
+  .medicine-form #med-name {
+    width: 150px;
+    max-width: 40vw;
+  }
+
+  .medicine-form input, .medicine-form button {
+    padding: 5px;
+    font-size: 15px;
+  }
 }

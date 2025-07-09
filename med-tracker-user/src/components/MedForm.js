@@ -20,12 +20,14 @@ function MedicineForm({ addMedicine }) {
         <form className="medicine-form" onSubmit={handleSubmit}>
             <input 
                 type="text"
+                id="med-name"
                 placeholder="Medicine Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
             <input
                 type="time"
+                id="med-sched"
                 placeholder="Schedule"
                 value={schedule}
                 onChange={(e) => setSchedule(e.target.value)}
