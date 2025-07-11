@@ -38,6 +38,8 @@ function TrackerPage({ userId, onLogout, setLoading }) {
         if (!userId) {
             return; // do nothing if logged out
         }
+
+        setLoading(true);
     
         fetch(`${API_BASE}/medications?userId=${userId}`, {
           method: 'GET' // GET means getting data
@@ -48,8 +50,10 @@ function TrackerPage({ userId, onLogout, setLoading }) {
           })
           .catch(err => {
             console.log('Load error:', err);
-          });
-    }, [userId]); // Dependency array ensures this runs when userId is available
+          })
+          .finally(() => setLoading(false));
+          
+    }, [userId, setLoading]); // Dependency array ensures this runs when userId is available/changed/reloads.
 
     const addMedicine = (newMedicine) => { // creates an array consists of name, schedule, taken
         setMedicines([...medicines, newMedicine]); // newMedicine is the newly added array to medicines using spread operator
