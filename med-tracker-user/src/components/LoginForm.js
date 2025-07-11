@@ -137,6 +137,7 @@ function LoginForm({ onLoginSuccess, setLoading }) {
                         <button
                             type='button'
                             id='create-btn'
+                            disabled='true'
                             onClick={() => switchFormType('signup')}
                             >Create Account
                         </button>
