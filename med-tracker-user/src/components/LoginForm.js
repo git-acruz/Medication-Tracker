@@ -9,6 +9,7 @@ function LoginForm({ onLoginSuccess, setLoading }) {
     const [error, setError] = useState('');
     const [confirm, setConfirm] = useState('');
     const [stayLoggedIn, setStayLoggedIn] = useState(false);
+    const [showPass, setShowPass] = useState(false);
     
     const handleApiCall = (endpoint, body) => {
         setLoading(true);
@@ -79,11 +80,20 @@ function LoginForm({ onLoginSuccess, setLoading }) {
                         type='text'
                         id='username-input'
                         minLength={'4'}
-                        placeholder='Enter Username(4 characters or more)'
+                        placeholder={formType === 'login' ? 'Enter Username' : 'Enter Username(4 characters or more)'}
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
+                    <div className='show-password-toggle'>
+                        <label>
+                            <input
+                                type='checkbox'
+                                checked={showPass}
+                                onChange={(e) => setShowPass(e.target.checked)}
+                            />Show Password
+                        </label>
+                    </div>
                     <input
                         type='password'
                         id='password-input'
@@ -137,7 +147,7 @@ function LoginForm({ onLoginSuccess, setLoading }) {
                         <button
                             type='button'
                             id='create-btn'
-                            disabled='true'
+                            disabled={true}
                             onClick={() => switchFormType('signup')}
                             >Create Account
                         </button>
