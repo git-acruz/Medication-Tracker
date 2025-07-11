@@ -3,6 +3,7 @@ import TrackerPage from './pages/TrackerPage';
 import LoginForm from './components/LoginForm';
 import LoadingOverlay from './components/LoadingOverlay';
 
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
 
 
