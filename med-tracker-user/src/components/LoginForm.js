@@ -95,7 +95,7 @@ function LoginForm({ onLoginSuccess, setLoading }) {
                         </label>
                     </div>
                     <input
-                        type='password'
+                        type={`${showPass ? 'text' : 'password'}`}
                         id='password-input'
                         placeholder='Enter Password'
                         value={password}
@@ -103,7 +103,7 @@ function LoginForm({ onLoginSuccess, setLoading }) {
                         required
                     />
                     {formType === 'signup' &&  (<input
-                        type='password'
+                        type={`${showPass ? 'text' : 'password'}`}
                         id='confirmpass-input'
                         placeholder='Retype Password'
                         value={confirm}
